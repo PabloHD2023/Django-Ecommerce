@@ -32,7 +32,11 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=250, blank=True, null=True, default="")
     image = models.ImageField(upload_to='uploads/products/')
-
+    #Agregamos un mensaje si el producto está en oferta
+    offer = models.BooleanField(default=False)
+    sale_price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    #Agregamos un mensaje si el producto está en stock
+    #stock = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
