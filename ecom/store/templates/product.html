@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header class="bg-dark py-1">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Product Details</h1>
+                <p class="lead fw-normal text-white-50 mb-0">{{ product.name }}</p> <!--Para que aparezca el nombre de cada producto seleccionado-->
+            </div>
+        </div>
+    </header>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-6">
+                    <img class="img-fluid rounded mb-4 mb-md-0" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+                <div class="col-md-6">
+                    <h3>{{ product.name }}</h3>
+                    <p style="text-align:justify;">{{ product.description }}</p>
+                    
+                    {% if product.offer %}
+                        <p><strike><strong>Price: ${{ product.price }}</strong></p></strike>
+                        <p><strong>Sale Price: ${{ product.sale_price }}</strong></p>
+                    {% else %}
+                        <p><strong>Price: ${{ product.price }}</strong></p>
+                    {% endif %}
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

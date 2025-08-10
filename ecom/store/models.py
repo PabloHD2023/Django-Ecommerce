@@ -30,7 +30,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.TextField(max_length=250, blank=True, null=True, default="")
+    description = models.TextField(max_length=3000, blank=True, null=True, default="")
     image = models.ImageField(upload_to='uploads/products/')
     #Agregamos un mensaje si el producto está en oferta
     offer = models.BooleanField(default=False)
